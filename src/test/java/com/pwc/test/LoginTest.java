@@ -10,7 +10,8 @@ import com.pwc.utilities.DataUtils;
 
 public class LoginTest extends AutomationWrapper {
 
-	@Test(dataProviderClass = DataUtils.class, dataProvider = "invalidCredentialData")
+	@Test(dataProviderClass = DataUtils.class,dataProvider = "commonDataProvider")
+	//@Test(dataProviderClass = DataUtils.class, dataProvider = "invalidCredentialData")
 	public void invalidCredentialTest(String username, String password, String expectedError) {
 		driver.findElement(By.id("txtUsername")).sendKeys(username);
 		driver.findElement(By.id("txtPassword")).sendKeys(password);
@@ -20,7 +21,7 @@ public class LoginTest extends AutomationWrapper {
 		Assert.assertEquals(actualError, expectedError);
 	}
 
-	@Test(dataProviderClass = DataUtils.class,dataProvider = "validCredentialData")
+	@Test(dataProviderClass = DataUtils.class,dataProvider = "commonDataProvider")
 	public void validCredentialTest(String username, String password, String expectedUrl) {
 		driver.findElement(By.id("txtUsername")).sendKeys(username);
 		driver.findElement(By.id("txtPassword")).sendKeys(password);

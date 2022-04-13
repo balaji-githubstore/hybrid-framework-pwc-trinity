@@ -1,15 +1,19 @@
 package com.pwc.utilities;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 import org.testng.annotations.DataProvider;
 
 public class DataUtils {
 	
 	@DataProvider
-	public String[][] validCredentialData() throws IOException
+	public String[][] commonDataProvider(Method method) throws IOException
 	{
-		String[][] main=ExcelUtils.getSheetIntoTwoDimArray("data/TestData.xlsx", "validCredentialTest");
+		//getting the current @Test method name which will be the sheetname
+		String testMethodName=method.getName();
+		
+		String[][] main=ExcelUtils.getSheetIntoTwoDimArray("data/TestData.xlsx", testMethodName);
 		return main;
 	}
 
