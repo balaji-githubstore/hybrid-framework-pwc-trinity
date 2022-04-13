@@ -1,6 +1,10 @@
 package com.pwc.test;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -29,6 +33,8 @@ public class LoginTest extends AutomationWrapper {
 		LoginPage.enterPassword(driver, password);
 		LoginPage.clickOnLogin(driver);
 
+		MainPortalPage.waitForPresenceOfMyInfo(driver);
+		
 		Assert.assertEquals(MainPortalPage.getMainPageUrl(driver), expectedUrl);
 	}
 
