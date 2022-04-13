@@ -1,21 +1,19 @@
-package com.pwc.test;
+package com.pwc.utilities;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class Demo2Test {
-
-	public static void main(String[] args) throws IOException {
-		
-		FileInputStream file=new FileInputStream("data/TestData.xlsx");
-		
+public class ExcelUtils {
+	
+	public static String[][] getSheetIntoTwoDimArray(String path,String sheetname) throws IOException
+	{
+		FileInputStream file=new FileInputStream(path);
 		XSSFWorkbook book=new XSSFWorkbook(file);
-		XSSFSheet sheet= book.getSheet("invalidCredentialTest");
+		XSSFSheet sheet= book.getSheet(sheetname);
 		int rowCount=sheet.getPhysicalNumberOfRows();
 		int cellCount=sheet.getRow(0).getPhysicalNumberOfCells();
 		
@@ -32,12 +30,7 @@ public class Demo2Test {
 			}
 		}
 		
-		System.out.println(main);
-		System.out.println(main[0][0]);
+		return main;
 	}
 
 }
-
-
-
-
