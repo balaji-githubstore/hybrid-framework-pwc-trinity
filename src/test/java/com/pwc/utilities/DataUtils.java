@@ -1,21 +1,15 @@
 package com.pwc.utilities;
 
+import java.io.IOException;
+
 import org.testng.annotations.DataProvider;
 
 public class DataUtils {
 	
 	@DataProvider
-	public String[][] validCredentialData()
+	public String[][] validCredentialData() throws IOException
 	{
-		String[][] main = new String[2][3];
-		main[0][0] = "Admin";
-		main[0][1] = "admin123";
-		main[0][2] = "https://opensource-demo.orangehrmlive.com/index.php/dashboard";
-
-		main[1][0] = "Admin";
-		main[1][1] = "admin123";
-		main[1][2] = "https://opensource-demo.orangehrmlive.com/index.php/dashboard";
-		
+		String[][] main=ExcelUtils.getSheetIntoTwoDimArray("data/TestData.xlsx", "validCredentialTest");
 		return main;
 	}
 
