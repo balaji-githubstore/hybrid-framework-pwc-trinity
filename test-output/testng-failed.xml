@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.pwc.test.LoginTest">
+      <class name="com.pwc.test.LoginUserInterfaceTest">
         <methods>
-          <include name="validCredentialTest" invocation-numbers="1"/>
+          <include name="validateTitleTest"/>
           <include name="setup"/>
           <include name="teardown"/>
         </methods>
-      </class> <!-- com.pwc.test.LoginTest -->
+      </class> <!-- com.pwc.test.LoginUserInterfaceTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
