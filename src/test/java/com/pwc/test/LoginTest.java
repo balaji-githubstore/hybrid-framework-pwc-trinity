@@ -6,6 +6,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.pwc.base.AutomationWrapper;
+import com.pwc.pages.LoginPage;
+import com.pwc.pages.MainPortalPage;
 import com.pwc.utilities.DataUtils;
 
 public class LoginTest extends AutomationWrapper {
@@ -13,21 +15,21 @@ public class LoginTest extends AutomationWrapper {
 	@Test(dataProviderClass = DataUtils.class,dataProvider = "commonDataProvider")
 	//@Test(dataProviderClass = DataUtils.class, dataProvider = "invalidCredentialData")
 	public void invalidCredentialTest(String username, String password, String expectedError) {
-		driver.findElement(By.id("txtUsername")).sendKeys(username);
-		driver.findElement(By.id("txtPassword")).sendKeys(password);
-		driver.findElement(By.id("btnLogin")).click();
+		LoginPage.enterUsername(driver, username);
+		LoginPage.enterPassword(driver, password);
+		LoginPage.clickOnLogin(driver);
 
-		String actualError = driver.findElement(By.id("spanMessage")).getText();
+		String actualError = LoginPage.getInvalidErrorMessage(driver);
 		Assert.assertEquals(actualError, expectedError);
 	}
 
 	@Test(dataProviderClass = DataUtils.class,dataProvider = "commonDataProvider")
 	public void validCredentialTest(String username, String password, String expectedUrl) {
-		driver.findElement(By.id("txtUsername")).sendKeys(username);
-		driver.findElement(By.id("txtPassword")).sendKeys(password);
-		driver.findElement(By.id("btnLogin")).click();
+		LoginPage.enterUsername(driver, username);
+		LoginPage.enterPassword(driver, password);
+		LoginPage.clickOnLogin(driver);
 
-		Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
+		Assert.assertEquals(MainPortalPage.getMainPageUrl(driver), expectedUrl);
 	}
 
 }
