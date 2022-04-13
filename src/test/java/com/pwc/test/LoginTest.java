@@ -17,5 +17,18 @@ public class LoginTest extends AutomationWrapper {
 		String actualError= driver.findElement(By.id("spanMessage")).getText();
 		Assert.assertEquals(actualError, "Invalid credentials");
 	}
+	
+	@Test
+	public void validCredentialTest()
+	{
+		driver.findElement(By.id("txtUsername")).sendKeys("Admin");
+		driver.findElement(By.id("txtPassword")).sendKeys("admin123");
+		driver.findElement(By.id("btnLogin")).click();
+		
+		Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/index.php/dashboard");
+		
+	}
 
 }
+	
+
