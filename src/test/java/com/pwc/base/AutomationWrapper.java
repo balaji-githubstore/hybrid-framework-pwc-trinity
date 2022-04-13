@@ -17,8 +17,8 @@ public class AutomationWrapper {
 	protected WebDriver driver;
 
 	@BeforeMethod
-	@Parameters({"browser"})
-	public void setup(@Optional("ch") String browserName) {
+	@Parameters({"browser","url"})
+	public void setup(@Optional("ch") String browserName,@Optional("http://demo.openemr.io/b/openemr/")  String url) {
 		
 		if (browserName.equalsIgnoreCase("edge")) {
 			WebDriverManager.edgedriver().setup();
@@ -33,7 +33,7 @@ public class AutomationWrapper {
 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		driver.get("https://opensource-demo.orangehrmlive.com/");
+		driver.get(url);
 	}
 
 	@AfterMethod
