@@ -24,4 +24,5 @@ public class LoginUserInterfaceTest {
 		String actualTitle= driver.getTitle();
 		Assert.assertEquals(actualTitle, "OrangeHRM");
 	}
+	
 }

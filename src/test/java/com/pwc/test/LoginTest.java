@@ -2,6 +2,7 @@ package com.pwc.test;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -21,11 +22,12 @@ public class LoginTest {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		driver.get("https://opensource-demo.orangehrmlive.com/");
 		
-//		2. Enter username John
-//		3. Enter password admin123
-//		4. Click on login
-//		5. Assert.assertEquals("", "Invalid credentials");
-
+		driver.findElement(By.id("txtUsername")).sendKeys("john");
+		driver.findElement(By.id("txtPassword")).sendKeys("john123");
+		driver.findElement(By.id("btnLogin")).click();
+		
+		String actualError= driver.findElement(By.id("spanMessage")).getText();
+		Assert.assertEquals(actualError, "Invalid credentials");
 	}
 
 }
