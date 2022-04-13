@@ -14,7 +14,7 @@ public class DataUtils {
 
 		main[1][0] = "Admin";
 		main[1][1] = "admin123";
-		main[1][2] = "https://opensource-demo.orangehrmlive.com/index.php/dashboar";
+		main[1][2] = "https://opensource-demo.orangehrmlive.com/index.php/dashboard";
 		
 		return main;
 	}
