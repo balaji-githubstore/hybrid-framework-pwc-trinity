@@ -18,7 +18,7 @@ public class AutomationWrapper {
 
 	@BeforeMethod
 	@Parameters({"browser","url"})
-	public void setup(@Optional("ch") String browserName,@Optional("http://demo.openemr.io/b/openemr/")  String url) {
+	public void setup(@Optional("ch") String browserName,@Optional("https://opensource-demo.orangehrmlive.com/")  String url) {
 		
 		if (browserName.equalsIgnoreCase("edge")) {
 			WebDriverManager.edgedriver().setup();
